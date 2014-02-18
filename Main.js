@@ -10,13 +10,13 @@ var Main;
 
             $scope.openURL = function () {
                 if ($scope.consumerKey == "" || $scope.consumerSecret == "") {
-                    $window.alert("consumerKey/Secret are empty");
+                    $window.alert("consumer Key/Secret are empty");
                 } else {
                     var key = $scope.consumerKey;
                     var secret = $scope.consumerSecret;
-                    controller.httpService.get("/api/tokens?consumerKey=" + key + "&consumerSecret=" + secret).success(function (data, status) {
+                    controller.httpService.get("./api/tokens?consumerKey=" + key + "&consumerSecret=" + secret).success(function (data, status) {
                         controller.oauthSession = data;
-                        $window.open(data.AuthorizeUri);
+                        $window.open(data.AuthorizeUri, "_blank");
                     });
                 }
             };
@@ -29,7 +29,7 @@ var Main;
                 } else {
                     var pinCode = $scope.pinCode;
                     var token = controller.oauthSession.SessionToken;
-                    var promise = controller.httpService.get("/api/tokens?sessionToken=" + token + "&pinCode=" + pinCode).success(function (data, status) {
+                    var promise = controller.httpService.get("./api/tokens?sessionToken=" + token + "&pinCode=" + pinCode).success(function (data, status) {
                         if (data == null) {
                             $window.alert("error");
                         } else {

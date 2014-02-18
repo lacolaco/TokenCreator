@@ -17,7 +17,7 @@ module Main {
         private httpService: any;
         private oauthSession: Model.OAuthSession;
 
-        constructor($window: any, $scope: Scope, $http: any) {
+        constructor($window: Window, $scope: Scope, $http: any) {
             this.httpService = $http;
             var controller = this;
             $scope.consumerKey = "";
@@ -26,15 +26,15 @@ module Main {
 
             $scope.openURL = () => {
                 if ($scope.consumerKey == "" || $scope.consumerSecret == "") {
-                    $window.alert("consumerKey/Secret are empty");
+                    $window.alert("consumer Key/Secret are empty");
                 }
                 else {
                     var key = $scope.consumerKey;
                     var secret = $scope.consumerSecret;
-                    controller.httpService.get("/api/tokens?consumerKey=" + key + "&consumerSecret=" + secret)
+                    controller.httpService.get("./api/tokens?consumerKey=" + key + "&consumerSecret=" + secret)
                         .success((data, status) => {
                             controller.oauthSession = data;
-                            $window.open(data.AuthorizeUri);
+                            $window.open(data.AuthorizeUri, "_blank");
                         });
                 }
             };
@@ -49,7 +49,7 @@ module Main {
                 else {
                     var pinCode = $scope.pinCode;
                     var token = controller.oauthSession.SessionToken;
-                    var promise = controller.httpService.get("/api/tokens?sessionToken=" + token + "&pinCode=" + pinCode)
+                    var promise = controller.httpService.get("./api/tokens?sessionToken=" + token + "&pinCode=" + pinCode)
                         .success((data, status) => {
                             if (data == null) {
                                 $window.alert("error");
