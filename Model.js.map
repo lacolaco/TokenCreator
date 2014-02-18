@@ -1,0 +1,1 @@
+{"version":3,"file":"model.js","sourceRoot":"","sources":["model.ts"],"names":["Model","Model.OAuthSession","Model.OAuthSession.constructor","Model.Token","Model.Token.constructor"],"mappings":"AAAA,IAAO,KAAK;AAWX,CAXD,UAAO,KAAK;IAERA;QAAAC;;AAGCA,QAADA,oBAACA;IAADA,CAACA,IAAAD;IAHDA,kCAGCA;;IAEDA;QAAAG;;AAGCA,QAADA,aAACA;IAADA,CAACA,IAAAH;IAHDA,oBAGCA;AACLA,CAACA,yBAAA"}

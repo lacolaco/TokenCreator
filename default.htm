@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="ja" ng-app>
+<head>
+    <meta charset="utf-8" />
+    <title>Token Creator</title>
+    <link rel="stylesheet" href="Content/bootstrap.css" type="text/css" />
+    <script src="scripts/angular.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <script src="model.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Twitter Token Creator</h1>
+        <div ng-controller="Main.Controller">
+            <form ng-submit="openURL()" class="form-group">
+                <table>
+                    <tr>
+                        <td>consumer_key: </td>
+                        <td><input type="text" ng-model="consumerKey" style="width:500px" /></td>
+                    </tr>
+                    <tr>
+                        <td>consumer_secret: </td>
+                        <td><input type="text" ng-model="consumerSecret" style="width:500px" /></td>
+                    </tr>
+                </table>
+                <button class="btn" type="submit">認証ページへ</button>
+            </form>
+            <hr />
+            <form ng-submit="getToken()" class="form-group">
+                <table>
+                    <tr>
+                        <td> PIN Code: </td>
+                        <td><input type="text" ng-model="pinCode" /></td>
+                    </tr>
+                </table>
+                <button class="btn" type="submit">トークン生成</button>
+            </form>
+            <hr />
+            <form class="form-group">
+                <table>
+                    <tr>
+                        <td>access_token: </td>
+                        <td><input type="text" ng-model="token.AccessToken" readonly style="width:500px" /></td>
+                    </tr>
+                    <tr>
+                        <td>access_token_secret: </td>
+                        <td><input type="text" ng-model="token.AccessSecret" readonly style="width:500px" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
